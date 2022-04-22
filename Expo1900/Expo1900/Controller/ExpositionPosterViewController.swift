@@ -59,18 +59,19 @@ final class ExpositionPosterViewController: UIViewController {
     }
     
     private func updatePoster() {
-        posterTitle.text = poster?.title?.replacingOccurrences(of: "(", with: "\n(")
-        posterTitle.changeFont(to: .title1, letter: posterTitle.text)
+        guard let posterTitleText = poster?.title?.replacingOccurrences(of: "(", with: "\n(") else {
+            return
+        }
+
+        posterTitle.attributedText = NSMutableAttributedString(text: posterTitleText, fontStyle: .title1, letter: posterTitle.text)
         
-        visitorsValue.text = "\(PosterLetter.visitors) : \(poster?.visitors?.numberFormatter() ?? "")"
-        visitorsValue.changeFont(to: .title3, letter: PosterLetter.visitors)
+        let visitorsValueText = "\(PosterLetter.visitors) : \(poster?.visitors?.numberFormatter() ?? "")"
+        visitorsValue.attributedText = NSMutableAttributedString(text: visitorsValueText, fontStyle: .title3, letter: PosterLetter.visitors)
         
-        locationValue.text = "\(PosterLetter.location) : \(poster?.location ?? "")"
-        locationValue.changeFont(to: .title3, letter: PosterLetter.location)
+        let locationValueText = "\(PosterLetter.location) : \(poster?.location ?? "")"
+        locationValue.attributedText = NSMutableAttributedString(text: locationValueText, fontStyle: .title3, letter: PosterLetter.location)
         
-        durationValue.text = "\(PosterLetter.duration) : \(poster?.duration ?? "")"
-        durationValue.changeFont(to: .title3, letter: PosterLetter.duration)
-        
-        descriptions.text = poster?.description
+        let durationValueText = "\(PosterLetter.duration) : \(poster?.duration ?? "")"
+        durationValue.attributedText = NSMutableAttributedString(text: durationValueText, fontStyle: .title3, letter: PosterLetter.duration)
         }
     }
