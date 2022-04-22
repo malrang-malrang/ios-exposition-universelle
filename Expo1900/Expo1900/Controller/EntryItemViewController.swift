@@ -22,7 +22,8 @@ final class EntryItemViewController: UIViewController {
     private var item: ExpositionItems?
     
     static func instance(item: ExpositionItems?) -> EntryItemViewController? {
-        let entryItemViewController = UIStoryboard.init(name: EntryItemLetter.main, bundle: nil).instantiateViewController(withIdentifier: EntryItemLetter.entryItemViewController) as? EntryItemViewController
+        let storyboard = UIStoryboard.init(name: EntryItemLetter.main, bundle: nil)
+        let entryItemViewController = storyboard.instantiateViewController(withIdentifier: EntryItemLetter.entryItemViewController) as? EntryItemViewController
         entryItemViewController?.item = item
         return entryItemViewController
     }
