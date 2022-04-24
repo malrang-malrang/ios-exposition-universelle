@@ -14,3 +14,5 @@ extension NSMutableAttributedString {
         self.addAttribute(.font, value: font, range: (text as NSString).range(of: letter ?? "" ))
     }
 }
+
+

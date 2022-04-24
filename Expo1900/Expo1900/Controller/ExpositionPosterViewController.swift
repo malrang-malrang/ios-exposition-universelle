@@ -31,6 +31,10 @@ final class ExpositionPosterViewController: UIViewController {
     @IBOutlet private weak var durationValue: UILabel!
     @IBOutlet private weak var descriptions: UILabel!
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPosterView()
@@ -43,12 +47,10 @@ final class ExpositionPosterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
-        appDelegate?.shouldSupporAllOrientation = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
-        appDelegate?.shouldSupporAllOrientation = true
     }
     
     @IBAction func didTapKoreaEntriesList(_ sender: UIButton) {
@@ -73,5 +75,7 @@ final class ExpositionPosterViewController: UIViewController {
         
         let durationValueText = "\(PosterLetter.duration) : \(poster?.duration ?? "")"
         durationValue.attributedText = NSMutableAttributedString(text: durationValueText, fontStyle: .title3, letter: PosterLetter.duration)
+        
+        descriptions.text = poster?.description
         }
     }
