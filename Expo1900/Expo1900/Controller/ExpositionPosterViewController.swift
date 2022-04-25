@@ -17,8 +17,6 @@ enum PosterLetter {
 
 final class ExpositionPosterViewController: UIViewController {
     
-    private let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    
     private var poster: ExpositionPoster? {
         didSet {
             updatePoster()
